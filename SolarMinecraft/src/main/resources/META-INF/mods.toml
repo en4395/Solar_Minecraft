@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[48,)"
+license="All Rights Reserved"
+issueTrackerURL=" "
+[[mods]]
+    modId="solarminecraft"
+    version="1.20.1"
+    displayName="Solar Minecraft"
+    displayURL=" "
+    authors="Ella Noyes"
+    description='''
+    Solar Powered Minecraft
+    '''
+
+[[dependencies.solarminecraft]]
+    modId="forge"
+    mandatory=true
+    versionRange="[48,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.solarminecraft]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.2,)"
+    ordering="NONE"
+    side="BOTH"
