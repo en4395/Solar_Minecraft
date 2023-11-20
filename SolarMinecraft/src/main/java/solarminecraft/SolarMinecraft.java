@@ -29,8 +29,6 @@ import java.util.concurrent.Future;
 
 @Mod(SolarMinecraft.MODID)
 public class SolarMinecraft {
-
-	public static ExecutorService executor = Executors.newSingleThreadExecutor();
 	public static final String MODID = "solarminecraft";
 
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
@@ -43,7 +41,6 @@ public class SolarMinecraft {
 			FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
 		});
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.GENERAL_SPEC);
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigHandler.CLIENT_SPEC);
 	}
 }
