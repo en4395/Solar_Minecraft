@@ -1,11 +1,13 @@
 # Solar Powered Minecraft
 
 ## The mod up to now
-At this stage, the mod is set up to display server data on a heads-up display (HUD). To demonstrate how the server will update the solar server data on the client's end, the server increments a value for CPU temperature and power draw. Once the modded server is up, these values will be fetched
-from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/SolarMinecraft/src/main/java/solarminecraft/services/DataQueryProcess.java)). 
-
+At this stage, the mod is set up to display server data on a heads-up display (HUD). The CPU temperature is fetched
+from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/SolarMinecraft/src/main/java/solarminecraft/services/DataQueryProcess.java)) and updated on the client side every second. Server power draw data will be fetched and updated in a similar manner.
 
 <img src = "https://github.com/en4395/Workshop_Images/blob/main/solar_minecraft_HUD.png" width=550> 
+
+## How to play on the server
+Instructions on joining the server are available [here](https://github.com/en4395/Solar_Minecraft/wiki/How-to-join-the-Solar-Minecraft-server)
 
 ## How to run the mod
 - In the command line, enter `cd <directory where you want to keep the mod>` (e.g., `cd Desktop/`)
