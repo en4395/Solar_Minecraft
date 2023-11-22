@@ -42,7 +42,7 @@ public class ServerSetup {
                 float currentPower;
 
                 while (!Thread.currentThread().isInterrupted()) {
-                    currentTemp = DataQueryProcess.lazyTempProcess();
+                    currentTemp = DataQueryProcess.cpuTempProcess();
                     currentPower = DataQueryProcess.powerProcess();
 
                     ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower));

@@ -14,7 +14,7 @@ public class DataQueryProcess {
 //
 //        GO FIND THE PATH TO CPU TEMP!
 //
-        String path = "<PATH>";
+        String path = "/sys/class/thermal/thermal_zone2/temp";
 
         try {
             ProcessBuilder pb = new ProcessBuilder("cat", path);
