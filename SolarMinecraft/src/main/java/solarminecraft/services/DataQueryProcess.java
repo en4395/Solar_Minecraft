@@ -40,6 +40,46 @@ public class DataQueryProcess {
         return 0;
     }
 
+    public static float[] serverDataProcess() {
+        float[] dataArray = new float[10];
+
+        String serialCommand = "stty -F /dev/ttyUSB0 raw 115200"; // Serial communication setup
+        String catCommand = "cat /dev/ttyUSB0";
+        String command = serialCommand + " && " + catCommand;
+
+        try {
+            ProcessBuilder pb = new ProcessBuilder(command);
+
+            pb.redirectErrorStream(true);
+
+            Process process = pb.start();
+
+            BufferedReader reader = new BufferedReader(new 	InputStreamReader(process.getInputStream()));
+
+            String data = reader.readLine();
+
+            System.out.println(data);
+
+            // Split the line into individual float values
+            String[] floatValues = data.split("\\s+");
+
+            // Convert and store the float values in the array
+            for (int i = 0; i < 10; i++) {
+                dataArray[i] = Float.parseFloat(floatValues[i]);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("Process exited with code: " + exitCode);
+            return dataArray;
+        }
+
+        catch(IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return dataArray;
+    }
+
     /*
     For testing purposes. This will likely be similar to cpuTempProcess, but will
     read serial output from arduino

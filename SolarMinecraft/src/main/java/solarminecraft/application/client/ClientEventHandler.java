@@ -25,8 +25,8 @@ public class ClientEventHandler {
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), "CPU internal temperature:", 5, 5, 0xFFFFFF, 0);
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getCpuTemp() + "ºC", 5, 5, 0xAAAAAA, 1);
 
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), "Power draw:", 5, 5, 0xFFFFFF, 3);
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getPower() + "W", 5, 5, 0xAAAAAA, 4);
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), "Server Battery:", 5, 5, 0xFFFFFF, 3);
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getBatteryPercentage() + "%", 5, 5, 0xAAAAAA, 4);
 			}
 	}
 }
