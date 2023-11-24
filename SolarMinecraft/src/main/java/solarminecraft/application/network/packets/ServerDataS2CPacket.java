@@ -12,24 +12,19 @@ public class ServerDataS2CPacket {
     private static float cpuTemp;
     private static float power;
 
-    private static float batteryPercentage;
-
-    public ServerDataS2CPacket(float cpuTemp, float power, float batteryPercentage) {
+    public ServerDataS2CPacket(float cpuTemp, float power) {
         this.cpuTemp = cpuTemp;
         this.power = power;
-        this.batteryPercentage = batteryPercentage;
     }
 
     public ServerDataS2CPacket(FriendlyByteBuf buf) {
         cpuTemp = buf.readFloat();
         power = buf.readFloat();
-        batteryPercentage = buf.readFloat();
     }
 
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeFloat(cpuTemp);
         buf.writeFloat(power);
-        buf.writeFloat(batteryPercentage);
     }
 
     public static boolean handle(ServerDataS2CPacket packet, CustomPayloadEvent.Context ctx) {
@@ -37,7 +32,6 @@ public class ServerDataS2CPacket {
                 // On client side
                 SolarServerData.setCpuTemp(cpuTemp);
                 SolarServerData.setPower(power);
-                SolarServerData.setBatteryPercentage(batteryPercentage);
         });
         return true;
     }

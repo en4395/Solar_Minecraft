@@ -39,17 +39,13 @@ public class ServerSetup {
 
             Future<?> future = ServerSetup.executor.submit(() -> {
                 float currentTemp;
-                float currentBatteryPercent;
                 float currentPower;
 
-
                 while (!Thread.currentThread().isInterrupted()) {
-                    float[] serverDataArray = DataQueryProcess.serverDataProcess();
                     currentTemp = DataQueryProcess.cpuTempProcess();
                     currentPower = DataQueryProcess.powerProcess();
-                    currentBatteryPercent = serverDataArray[7];
 
-                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower, currentBatteryPercent));
+                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower));
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -66,7 +62,7 @@ public class ServerSetup {
             if(!event.getLevel().isClientSide()) {
                 if(event.getEntity() instanceof ServerPlayer player) {
                     ServerPlayer eventPlayer = (ServerPlayer) event.getEntity();
-                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F, 0.0F), player);
+                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F), player);
                 }
             }
         }
