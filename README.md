@@ -6,12 +6,16 @@ Simon & Dr. Darren Wershler.
 The project is exploring alternate minecraft game mechanics and play-styles when integrating 
 Real-Time Solar and Power usage data into the minecraft world. 
 
-This mod, running on a server, uses the server's stats to alter the gameplay for all players online.
+This forge mod, running on a server, uses the server's stats to alter the gameplay for all players online. 
 
 ## Getting Started 
 - Clone the repository and open a terminal in the root directory of the project.
 - Run `./gradlew build` to fetch and compile Gradle. This should output `Build Successful`. 
-- Run `./gradlew runClient` to compile the source code and run it in Minecraft. 
+- Run `./gradlew runClient` to compile the source code and run it in Minecraft.
+
+## Running The Mod: 
+- For the JAR file, please see [releases](https://github.com/estineali/Solar_Minecraft/releases).
+- For instructions on how to run this with forge, see [this wiki link](https://github.com/en4395/Solar_Minecraft/wiki/How-to-join-the-Solar-Minecraft-server).  
 
 ## The Mod up to now
 At this stage, the mod is set up to display server data on a heads-up display (HUD). 
