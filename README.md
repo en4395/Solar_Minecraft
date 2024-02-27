@@ -1,8 +1,11 @@
 # Solar Powered Minecraft
 
 The Solar Minecraft Project is a research project at Concordia University Montreal, under the supervision of Dr. Bart 
-Simon & Dr. Darren Wershler. The project is exploring alternate minecraft game mechanics and play-styles when integrating 
+Simon & Dr. Darren Wershler. 
+
+The project is exploring alternate minecraft game mechanics and play-styles when integrating 
 Real-Time Solar and Power usage data into the minecraft world. 
+
 This mod, running on a server, uses the server's stats to alter the gameplay for all players online.
 
 ## Getting Started 
