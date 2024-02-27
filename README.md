@@ -27,3 +27,8 @@ The server also increments a power draw variable for demonstration purposes.
 
 ## Contributors: 
 1. [Ella Noyes](https://github.com/en4395/Solar_Minecraft)
+
+## Technologies Used 
+1. Java 17 - Eclipse Temurin Version
+2. Minecraft Forge `1.20.2`
+3. Gradle
