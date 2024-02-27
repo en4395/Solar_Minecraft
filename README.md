@@ -21,4 +21,5 @@ The server also increments a power draw variable for demonstration purposes.
 
 <img src = "https://github.com/en4395/Workshop_Images/blob/main/solar_minecraft_HUD.png" width=550> 
 
-
+## Contributors: 
+1. [Ella Noyes](https://github.com/en4395/Solar_Minecraft)
