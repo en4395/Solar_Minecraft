@@ -1,16 +1,34 @@
 # Solar Powered Minecraft
 
-## The mod up to now
-At this stage, the mod is set up to display server data on a heads-up display (HUD). The CPU temperature values are fetched
-from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/SolarMinecraft/src/main/java/solarminecraft/services/DataQueryProcess.java)). The server also increments a power draw variable for demonstration purposes.
+The Solar Minecraft Project is a research project at Concordia University Montreal, under the supervision of Dr. Bart 
+Simon & Dr. Darren Wershler. 
 
+The project is exploring alternate minecraft game mechanics and play-styles when integrating 
+Real-Time Solar and Power usage data into the minecraft world. 
+
+This forge mod, running on a server, uses the server's stats to alter the gameplay for all players online. 
+
+## Getting Started 
+- Clone the repository and open a terminal in the root directory of the project.
+- Run `./gradlew build` to fetch and compile Gradle. This should output `Build Successful`. 
+- Run `./gradlew runClient` to compile the source code and run it in Minecraft.
+
+## Running The Mod: 
+- For the JAR file, please see [releases](https://github.com/estineali/Solar_Minecraft/releases).
+- For instructions on how to run this with forge, see [this wiki link](https://github.com/en4395/Solar_Minecraft/wiki/How-to-join-the-Solar-Minecraft-server).  
+
+## The Mod up to now
+At this stage, the mod is set up to display server data on a heads-up display (HUD). 
+The CPU temperature values are fetched
+from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/SolarMinecraft/src/main/java/solarminecraft/services/DataQueryProcess.java)). 
+The server also increments a power draw variable for demonstration purposes.
 
 <img src = "https://github.com/en4395/Workshop_Images/blob/main/solar_minecraft_HUD.png" width=550> 
 
-## How to run the mod
-- In the command line, enter `cd <directory where you want to keep the mod>` (e.g., `cd Desktop/`)
-- Enter `git clone https://github.com/en4395/Solar_Minecraft`
-- Enter `cd Solar_Minecraft/SolarMinecraft/`, this gets you inside the mod's directory
-- Enter `./gradlew build`
-- Wait for the build to complete. This should output a `Build Successful`
-- Enter `./gradlew runClient` this will launch Minecraft with the loaded mod
+## Contributors: 
+1. [Ella Noyes](https://github.com/en4395/Solar_Minecraft)
+
+## Technologies Used 
+1. Java 17 - Eclipse Temurin Version
+2. Minecraft Forge `1.20.2`
+3. Gradle
