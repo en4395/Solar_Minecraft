@@ -21,7 +21,7 @@ Please see the [docs folder](./docs/) for more documentation.
 ## The Mod up to now
 At this stage, the mod is set up to display server data on a heads-up display (HUD). 
 
-The CPU temperature values are fetched from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/SolarMinecraft/src/main/java/solarminecraft/services/DataQueryProcess.java)). 
+The CPU temperature values are fetched from the command line on the server side (see how this is done [here](https://github.com/en4395/Solar_Minecraft/blob/main/src/main/java/solarminecraft/services/DataQueryProcess.java)). 
 
 The server also increments a power draw variable. These are test values for demonstration purpose and DO NOT CORRESPOND TO REAL SYSTEM POWER DRAW.
 
