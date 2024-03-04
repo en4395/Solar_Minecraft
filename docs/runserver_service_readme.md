@@ -34,11 +34,11 @@ WantetBy=default.target
 
 5. Run `systemctl daemon-reload` command to load the newly created service.
 
-6. `systemctl enable runserver.service`
+6. Run `systemctl enable runserver.service`to activate the service. Now the server should run automatically on boot. 
 
 7. `systemctl start test.service`
 
-How to stop the run server service:
+### Stopping The Services
 `sudo systemctl stop runserver.service`
 
 
