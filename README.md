@@ -8,6 +8,7 @@ Real-Time Solar and Power usage data into the minecraft world.
 
 This forge mod, running on a server, uses the server's stats to alter the gameplay for all players online. 
 
+Please see the [docs folder](./docs/) for more documentation.
 ## Getting Started 
 - Clone the repository and open a terminal in the root directory of the project.
 - Run `./gradlew build` to fetch and compile Gradle. This should output `Build Successful`. 
