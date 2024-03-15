@@ -45,11 +45,42 @@ public class DataQueryProcess {
     read serial output from arduino
     */
     public static float powerProcess() {
-        if(power < 50)
-            power += 5;
-        else
-            power = 0;
-        return power;
+
+//        String path = "/home/pc/serialread/solar_data.json";
+        String path = "solar_data.json";
+        System.out.println("Process started");
+
+
+        try {
+
+            ProcessBuilder pb = new ProcessBuilder("cat", path);
+            System.out.println("Process builder instantiated.");
+
+
+            pb.redirectErrorStream(true);
+            System.out.println("Redirect error stream is set to true.");
+
+            Process process = pb.start();
+            System.out.println("Running Cat");
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            System.out.println("Create Buffer Reader");
+            System.out.println("Starting Buffer Reader");
+
+            while (reader.ready()) {
+                System.out.println(reader.readLine());
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("Process exited");
+            return 7.7f;
+        }
+
+        catch(IOException | InterruptedException e) {
+            System.out.println("Error Running this function.");
+            e.printStackTrace();
+        }
+        return 4.04f;
     }
 
     /*
