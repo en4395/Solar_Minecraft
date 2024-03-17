@@ -1,4 +1,5 @@
 # Solar Powered Minecraft
+`Version 1.0.1`
 
 The Solar Minecraft Project is a research project at Concordia University Montreal, under the supervision of Dr. Bart 
 Simon & Dr. Darren Wershler. 
@@ -28,7 +29,8 @@ The server also increments a power draw variable. These are test values for demo
 <img src = "https://github.com/en4395/Workshop_Images/blob/main/solar_minecraft_HUD.png" width=550> 
 
 ## Contributors: 
-1. [Ella Noyes](https://github.com/en4395/Solar_Minecraft)
+1. [Ella Noyes](https://github.com/en4395)
+2. [Shahrom Ali](https://github.com/estineali)
 
 ## Technologies Used 
 1. Java 17 - Eclipse Temurin Version
