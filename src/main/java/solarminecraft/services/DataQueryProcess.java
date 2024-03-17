@@ -46,11 +46,8 @@ public class DataQueryProcess {
     */
     public static float powerProcess() {
 
-//        String path = "/home/pc/serialread/solar_data.json";
-        String path = "solar_data.json";
+        String path = "/home/pc/serialread/solar_data.json";
         System.out.println("Process started");
-
-
         try {
 
             ProcessBuilder pb = new ProcessBuilder("cat", path);
@@ -81,19 +78,5 @@ public class DataQueryProcess {
             e.printStackTrace();
         }
         return 4.04f;
-    }
-
-    /*
-    These variables are for testing purposes! The thread running on the server will
-    ultimately just call cpuTempProcess() and powerProcess()
-    */
-    private static float temp = 40;
-    private static float power = 30;
-
-    public static float lazyTempProcess() {
-       if(temp < 100)
-           temp += 5;
-       else temp = 0;
-       return temp;
     }
 }
