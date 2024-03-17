@@ -1,5 +1,9 @@
 package solarminecraft.services.setup;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -8,15 +12,10 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.ServerLifecycleHooks;
-
 import solarminecraft.SolarMinecraft;
 import solarminecraft.application.network.ModPackets;
 import solarminecraft.application.network.packets.ServerDataS2CPacket;
 import solarminecraft.services.DataQueryProcess;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class ServerSetup {
 
@@ -41,13 +40,35 @@ public class ServerSetup {
                 float currentTemp;
                 float currentPower;
                 float currentPVVoltage;
+                float currentPVCurrent;
+                float currentPVPower;
+                float currentbattVoltage;
+                float currentbattChargeCurrent;
+                float currentbattChargePower;
+                float currentlPower;
+                float currentbattRemaining;
+                float currentbattTemp;
+                float currentbattOverallCurrent;
 
                 while (!Thread.currentThread().isInterrupted()) {
                     currentTemp = DataQueryProcess.GetCPUTemp();
                     currentPower = DataQueryProcess.GetSysPower();
+
                     currentPVVoltage = DataQueryProcess.GetPVVoltage();
+                    currentPVCurrent = DataQueryProcess.GetPVCurrent();
+                    currentPVPower = DataQueryProcess.GetPVPower();
                     
-                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower, currentPVVoltage));
+                    currentbattVoltage = DataQueryProcess.GetBattVoltage();
+                    currentbattChargeCurrent = DataQueryProcess.GetBattChargeCurrent();
+                    currentbattChargePower = DataQueryProcess.GetBattChargePower();
+                    
+                    currentlPower = DataQueryProcess.GetLPower();
+                    
+                    currentbattRemaining = DataQueryProcess.GetBattRemaining();
+                    currentbattTemp = DataQueryProcess.GetBattTemp();
+                    currentbattOverallCurrent = DataQueryProcess.GetBattOverallCurrent();
+
+                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower, currentPVVoltage, currentPVCurrent, currentPVPower, currentbattVoltage, currentbattChargeCurrent, currentbattChargePower, currentlPower, currentbattRemaining, currentbattTemp, currentbattOverallCurrent));
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -64,7 +85,7 @@ public class ServerSetup {
             if(!event.getLevel().isClientSide()) {
                 if(event.getEntity() instanceof ServerPlayer player) {
                     ServerPlayer eventPlayer = (ServerPlayer) event.getEntity();
-                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F, 0.0F), player);
+                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), player);
                 }
             }
         }
