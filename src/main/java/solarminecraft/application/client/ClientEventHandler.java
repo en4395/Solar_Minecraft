@@ -22,11 +22,17 @@ public class ClientEventHandler {
 	public void onRenderTick(RenderGuiOverlayEvent.Post event) {
 			if (mc.player != null && mc.level != null && !mc.options.hideGui && (mc.screen == null || (ConfigHandler.CLIENT.displayWithChatOpen.get() && mc.screen instanceof ChatScreen))) {
 				final Player player = mc.player;
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), "CPU internal temperature:", 5, 5, 0xFFFFFF, 0);
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getCpuTemp() + "ºC", 5, 5, 0xAAAAAA, 1);
 
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), "Power draw:", 5, 5, 0xFFFFFF, 3);
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getPower() + "W", 5, 5, 0xAAAAAA, 4);
+				String tempString = "CPU temperature: " + ClientSetup.serverData.getCpuTemp() + "ºC"; 
+				String powerString = "Power Draw: " + ClientSetup.serverData.getPower() + "W"; 
+				String pvVoltageString = "Solar Voltage: " + ClientSetup.serverData.getPvVoltage() + "V";
+
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), tempString, 5, 5, 0xFFFFFF, 0);
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), powerString, 5, 5, 0xFFFFFF, 1);
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), pvVoltageString, 5, 5, 0xFFFFFF, 2);
+
+				// RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getCpuTemp() + "ºC", 5, 5, 0xAAAAAA, 1);
+				// RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), ClientSetup.serverData.getPower() + "W", 5, 5, 0xAAAAAA, 4);
 			}
 	}
 }

@@ -42,8 +42,8 @@ public class ServerSetup {
                 float currentPower;
 
                 while (!Thread.currentThread().isInterrupted()) {
-                    currentTemp = DataQueryProcess.cpuTempProcess();
-                    currentPower = DataQueryProcess.powerProcess();
+                    currentTemp = DataQueryProcess.GetCPUTemp();
+                    currentPower = DataQueryProcess.GetSysPower();
 
                     ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower));
                     try {
