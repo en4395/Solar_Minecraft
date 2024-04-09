@@ -23,8 +23,8 @@ public class ClientEventHandler {
 			if (mc.player != null && mc.level != null && !mc.options.hideGui && (mc.screen == null || (ConfigHandler.CLIENT.displayWithChatOpen.get() && mc.screen instanceof ChatScreen))) {
 				final Player player = mc.player;
 
-				String tempString = "CPU: " + ClientSetup.serverData.getCpuTemp() + "ºC";
-				String powerString = "Power Draw: " + ClientSetup.serverData.getPower() + "W"; 
+				String tempString = "CPU: " + ClientSetup.serverData.getCpuTemp() + "ºC | " + ClientSetup.serverData.getPower() + "W";
+				String powerString = "System Power Draw: " + ClientSetup.serverData.getlPower()  + "W";
 				
 				String solarStats = "Solar: " + ClientSetup.serverData.getPvVoltage() + "V | " + ClientSetup.serverData.getPvCurrent() + "A | " + ClientSetup.serverData.getPvPower() + "W";
 				String battChrgString = "Battery Charging: " + ClientSetup.serverData.getBattChargeCurrent() + "A | " + ClientSetup.serverData.getBattChargePower() + "W";
