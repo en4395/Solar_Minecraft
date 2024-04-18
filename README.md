@@ -31,8 +31,9 @@ The server also increments a power draw variable. These are test values for demo
 ## Contributors: 
 1. [Ella Noyes](https://github.com/en4395)
 2. [Shahrom Ali](https://github.com/estineali)
+3. [Stuart Thiel](https://github.com/ramou)
 
 ## Technologies Used 
 1. Java 17 - Eclipse Temurin Version
-2. Minecraft Forge `1.20.2`
+2. Minecraft Forge `1.20.1`
 3. Gradle
