@@ -57,8 +57,77 @@ public class DataQueryProcess {
     public static float GetSysPower() {
         return GetServerData(SOLAR_DATA.SYSTEMPOWERDRAW);
     }
+    
+    public static float GetPVVoltage() {
+        return GetServerData(SOLAR_DATA.PVVOLTAGE);
+    }
 
-    public static float GetServerData(SOLAR_DATA property) { 
+    public static float GetPVCurrent() {
+        return GetServerData(SOLAR_DATA.PVCURRENT);
+    }
+
+    public static float GetPVPower() {
+        return GetServerData(SOLAR_DATA.PVPOWER);
+    }
+
+    public static float GetBattVoltage() {
+        return GetServerData(SOLAR_DATA.BATTVOLTAGE);
+    }
+
+    public static float GetBattChargeCurrent() {
+        return GetServerData(SOLAR_DATA.BATTCHARGECURRENT);
+    }
+
+    public static float GetBattChargePower() {
+        return GetServerData(SOLAR_DATA.BATTCHARGEPOWER);
+    }
+
+    public static float GetLPower() {
+        return GetServerData(SOLAR_DATA.LPOWER);
+    }
+
+    public static float GetBattRemaining() {
+        return GetServerData(SOLAR_DATA.BATTREMAINING);
+    }
+
+    public static float GetBattTemp() {
+        return GetServerData(SOLAR_DATA.BATTTEMP);
+    }
+
+    public static float GetBattOverallCurrent() {
+        return GetServerData(SOLAR_DATA.BATTOVERALLCURRENT);
+    }
+
+    // UNTESTED
+    public static String GetTimestamp() { 
+
+        String path = "/home/pc/serialread/solar_data.json";
+        int count_lines = 2; // only need to read until the 2nd line 
+
+        try {
+            ProcessBuilder pb = new ProcessBuilder("cat", path);
+            pb.redirectErrorStream(true);
+
+            Process process = pb.start();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            
+            String data = "";
+            for (int i = 0; i < count_lines; i++) 
+                data = reader.readLine().strip();
+
+            if (data != null) { 
+                data = data.split(":", 2)[1];
+            }
+            return data; 
+        } catch (Exception e) { 
+            System.out.println("ERROR: There was an error calling GetTimestamp: " + e.getMessage() );
+            return "";
+        }    
+    }
+
+
+    /* PRIVATE FUNCTIONS */
+    static float GetServerData(SOLAR_DATA property) { 
         // dont use this function to get the timestamp. This function only returns a float. 
 
         if (property == SOLAR_DATA.TIMESTAMP) { 
@@ -105,45 +174,21 @@ public class DataQueryProcess {
             } 
             return 7.7f;
         } catch (Exception e) { 
-            System.out.println("There was an error running this function");
+            System.out.println("There was an error running this function: " + e.getMessage());
             return -1f;
         } 
     }
 
-    public static float GetValue(String data) { 
+    static float GetValue(String data) { 
         // Extract the float value from the string entry from the JSON file
         
         float ret_val = 0.0f;
         String[] split_data = data.split(":", 2); 
-        ret_val = Float.valueOf(split_data[1].replace('"', '\0'));
+        ret_val = Float.valueOf(split_data[1].replace('"', '\0').replace(',', '\0').strip());
 
         return ret_val;
          
     }
 
-    public static String GetTimestamp() { 
-        String path = "/home/pc/serialread/solar_data.json";
-        int count_lines = 2; // only need to read until the 2nd line 
-
-        try {
-            ProcessBuilder pb = new ProcessBuilder("cat", path);
-            pb.redirectErrorStream(true);
-
-            Process process = pb.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            
-            String data = "";
-            for (int i = 0; i < count_lines; i++) 
-                data = reader.readLine().strip();
-
-            if (data != null) { 
-                data = data.split(":", 2)[1];
-            }
-            return data; 
-        } catch (Exception e) { 
-            System.out.println("ERROR: There was an error calling GetTimestamp: " + e.getMessage() );
-            return "";
-        }    
-    }
-
+    
 }
