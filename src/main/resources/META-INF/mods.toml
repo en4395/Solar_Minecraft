@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[48,)"
+loaderVersion="[47,)"
 license="All Rights Reserved"
 issueTrackerURL=" "
 [[mods]]
     modId="solarminecraft"
-    version="1.20.2"
+    version="1.20.1"
     displayName="Solar Minecraft"
     displayURL=" "
     authors="Ella Noyes"
@@ -15,12 +15,12 @@ issueTrackerURL=" "
 [[dependencies.solarminecraft]]
     modId="forge"
     mandatory=true
-    versionRange="[48,)"
+    versionRange="[47,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.solarminecraft]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.2,)"
+    versionRange="[1.20.1,)"
     ordering="NONE"
     side="BOTH"

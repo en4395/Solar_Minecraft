@@ -1,10 +1,12 @@
 package solarminecraft.application.network.packets;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.minecraftforge.network.NetworkEvent;
 import solarminecraft.domain.SolarServerData;
 
-/* Server data packets will be send from the server to clients every second.
+import java.util.function.Supplier;
+
+/* Server data packets will be sent from the server to clients every second.
 (See thread in ServerSetup.onServerStarting)
  */
 
@@ -27,8 +29,8 @@ public class ServerDataS2CPacket {
         buf.writeFloat(power);
     }
 
-    public static boolean handle(ServerDataS2CPacket packet, CustomPayloadEvent.Context ctx) {
-        ctx.enqueueWork( () ->{
+    public static boolean handle(ServerDataS2CPacket packet, Supplier<NetworkEvent.ClientCustomPayloadEvent.Context> ctx) {
+        ctx.get().enqueueWork( () ->{
                 // On client side
                 SolarServerData.setCpuTemp(cpuTemp);
                 SolarServerData.setPower(power);
