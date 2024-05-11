@@ -101,7 +101,7 @@ public class DataQueryProcess {
     // UNTESTED
     public static String GetTimestamp() { 
 
-        String path = "/home/pc/serialread/solar_data.json";
+        String path = "/home/pc/SunblockData/solar_data.json";
         int count_lines = 2; // only need to read until the 2nd line 
 
         try {
@@ -134,7 +134,7 @@ public class DataQueryProcess {
             return -1f; 
         }
 
-        String path = "/home/pc/serialread/solar_data.json";
+        String path = "/home/pc/SunblockData/solar_data.json";
         int count_lines = 14;
 
         try {
