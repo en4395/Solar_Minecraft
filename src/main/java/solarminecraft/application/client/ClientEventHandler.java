@@ -30,13 +30,15 @@ public class ClientEventHandler {
 				String battChrgString = "Battery Charging: " + ClientSetup.serverData.getBattChargeCurrent() + "A | " + ClientSetup.serverData.getBattChargePower() + "W";
 				String battString = "Battery: " + ClientSetup.serverData.getBattVoltage() + "V | " + ClientSetup.serverData.getBattRemaining() + "%";
 				String battOverallCurrentString = "Overall Battery Current: " + ClientSetup.serverData.getBattOverallCurrent() + "A";
+				String timeRemainingString = "Time Remaining: " + ClientSetup.serverData.getTimeRemaining() + " Hours";
 
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), tempString, 5, 5, 0xFFFFFF, 0);
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), powerString, 5, 5, 0xFFFFFF, 1);
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), solarStats, 5, 5, 0xFFFFFF, 2);
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), battString, 5, 5, 0xFFFFFF, 3);
 				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), battChrgString, 5, 5, 0xFFFFFF, 4);
-				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), battOverallCurrentString, 5, 5, 0xFFFFFF, 5);
+//				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), battOverallCurrentString, 5, 5, 0xFFFFFF, 5);
+				RenderUtils.drawConfiguredStringOnHUD(event.getGuiGraphics(), timeRemainingString, 5, 5, 0xFFFFFF, 5);
 			}
 	}
 }

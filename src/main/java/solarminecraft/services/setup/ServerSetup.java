@@ -49,6 +49,7 @@ public class ServerSetup {
                 float currentbattRemaining;
                 float currentbattTemp;
                 float currentbattOverallCurrent;
+                String timeRemaining;
 
                 while (!Thread.currentThread().isInterrupted()) {
                     currentTemp = DataQueryProcess.GetCPUTemp();
@@ -67,8 +68,9 @@ public class ServerSetup {
                     currentbattRemaining = DataQueryProcess.GetBattRemaining();
                     currentbattTemp = DataQueryProcess.GetBattTemp();
                     currentbattOverallCurrent = DataQueryProcess.GetBattOverallCurrent();
+                    timeRemaining = DataQueryProcess.GetTimeRemaining();
 
-                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower, currentPVVoltage, currentPVCurrent, currentPVPower, currentbattVoltage, currentbattChargeCurrent, currentbattChargePower, currentlPower, currentbattRemaining, currentbattTemp, currentbattOverallCurrent));
+                    ModPackets.sendToClients(new ServerDataS2CPacket(currentTemp, currentPower, currentPVVoltage, currentPVCurrent, currentPVPower, currentbattVoltage, currentbattChargeCurrent, currentbattChargePower, currentlPower, currentbattRemaining, currentbattTemp, currentbattOverallCurrent, timeRemaining));
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -85,7 +87,7 @@ public class ServerSetup {
             if(!event.getLevel().isClientSide()) {
                 if(event.getEntity() instanceof ServerPlayer player) {
                     ServerPlayer eventPlayer = (ServerPlayer) event.getEntity();
-                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), player);
+                    ModPackets.sendToPlayer(new ServerDataS2CPacket(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ""), player);
                 }
             }
         }

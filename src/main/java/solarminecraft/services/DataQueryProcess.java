@@ -98,6 +98,14 @@ public class DataQueryProcess {
         return GetServerData(SOLAR_DATA.BATTOVERALLCURRENT);
     }
 
+    public static String GetTimeRemaining() {
+        float battRemaining = GetBattRemaining();
+        float batteryCapacity = 240f; // max battery capacity in Watts
+        float loadPower = GetLPower();
+
+        return Float.toString((battRemaining / 100 ) * (batteryCapacity / loadPower));
+    }
+
     // UNTESTED
     public static String GetTimestamp() { 
 
@@ -190,5 +198,5 @@ public class DataQueryProcess {
          
     }
 
-    
+
 }
