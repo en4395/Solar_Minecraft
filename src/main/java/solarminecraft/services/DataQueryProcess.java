@@ -26,12 +26,13 @@ public class DataQueryProcess {
         BATTOVERALLCURRENT,
         SYSTEMPOWERDRAW
     }
+    static String CPUTempPath = "/sys/class/thermal/thermal_zone2/temp";
+    static String SunblockDataPath = "/home/pc/SunblockData/solar_data.json";
+
 
     public static float GetCPUTemp() {
-        String path = "/sys/class/thermal/thermal_zone2/temp";
-
         try {
-            ProcessBuilder pb = new ProcessBuilder("cat", path);
+            ProcessBuilder pb = new ProcessBuilder("cat", CPUTempPath);
 
             pb.redirectErrorStream(true);
 
@@ -44,7 +45,6 @@ public class DataQueryProcess {
             temp /= 1000;
 
             int exitCode = process.waitFor();
-            System.out.println("Process exited with code: " + exitCode);
             return temp;
         }
 
@@ -142,11 +142,10 @@ public class DataQueryProcess {
             return -1f; 
         }
 
-        String path = "/home/pc/SunblockData/solar_data.json";
         int count_lines = 14;
 
         try {
-            ProcessBuilder pb = new ProcessBuilder("cat", path);
+            ProcessBuilder pb = new ProcessBuilder("cat", SunblockDataPath);
             pb.redirectErrorStream(true);
             Process process = pb.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
