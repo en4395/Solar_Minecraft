@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.ProcessBuilder;
 import java.lang.Process;
-
+import java.util.LinkedList;
+import java.util.Queue;
+import java.text.DecimalFormat;
 
 
 public class DataQueryProcess {
@@ -28,7 +30,11 @@ public class DataQueryProcess {
     }
     static String CPUTempPath = "/sys/class/thermal/thermal_zone2/temp";
     static String SunblockDataPath = "/home/pc/SunblockData/solar_data.json";
+    static float MAXBATTERYCAPACITY = 240f; // max battery capacity in Watts
+    static int MAXMEMORY = 10; // Last 10 seconds
 
+    // array of the past 10 power consumption values to
+    static Queue<Float> powerConsumptionHistory = new LinkedList<>();
 
     public static float GetCPUTemp() {
         try {
@@ -100,10 +106,26 @@ public class DataQueryProcess {
 
     public static String GetTimeRemaining() {
         float battRemaining = GetBattRemaining();
-        float batteryCapacity = 240f; // max battery capacity in Watts
+
         float loadPower = GetLPower();
 
-        return Float.toString((battRemaining / 100 ) * (batteryCapacity / loadPower));
+        if (powerConsumptionHistory.size() < MAXMEMORY) {
+            powerConsumptionHistory.add(loadPower);
+            return "Calculating...";
+        } else {
+            powerConsumptionHistory.remove();
+            powerConsumptionHistory.add(loadPower);
+
+            float avgPowerConsumption = SumOfQueue(powerConsumptionHistory) / powerConsumptionHistory.size();
+            float timeRemaining = (battRemaining / 100 ) * (MAXBATTERYCAPACITY / avgPowerConsumption);
+            // Truncate to 2 decimal places
+            return Double.toString(Math.floor(timeRemaining * 100) / 100);
+
+        }
+
+
+
+
     }
 
     // UNTESTED
@@ -195,6 +217,17 @@ public class DataQueryProcess {
 
         return ret_val;
          
+    }
+
+    static float SumOfQueue(Queue q){
+        float _sum = 0f;
+        Object[] arr = q.toArray();
+
+        for (int i = 0; i < q.size(); i++) {
+            _sum += Float.parseFloat(arr[i].toString());
+        }
+
+        return _sum;
     }
 
 
